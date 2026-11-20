@@ -1,0 +1,69 @@
+{
+  "run": "demo-1",
+  "started": "2026-10-10T22:30:00Z",
+  "workspace": "LAB\\work\\demo",
+  "fixture": "demo",
+  "engine": "podman",
+  "commit": "b7dd81ce9bed691b04bbc1b7a8eb333ce2c6000f",
+  "tag": "localhost/academy-w107:b7dd81ce9bed",
+  "image_id": "05bedb4362303c8fb981c9a7af001025ae94377f4b9eca6c3c216c9151ccd313",
+  "committed_files": [
+    "Dockerfile",
+    "web/index.html"
+  ],
+  "working_status": [],
+  "approval": {
+    "release": "Equipment release blue",
+    "page_sha256": "2dce10f301f77c4c00cf1e00347d343b722949fc7064105329613a7b40f712fa"
+  },
+  "stages": {
+    "build": {
+      "status": "passed",
+      "command": "podman build --pull=never --label org.opencontainers.image.revision=b7dd81ce9bed691b04bbc1b7a8eb333ce2c6000f -t localhost/academy-w107:b7dd81ce9bed -f LAB\\runs\\demo-1\\snapshot\\Dockerfile LAB\\runs\\demo-1\\snapshot",
+      "context": "LAB\\runs\\demo-1\\snapshot",
+      "log": "build.log"
+    },
+    "test": {
+      "status": "passed",
+      "log": "test.log",
+      "observed_status": 200,
+      "observed_sha256": "2dce10f301f77c4c00cf1e00347d343b722949fc7064105329613a7b40f712fa",
+      "expected_sha256": "2dce10f301f77c4c00cf1e00347d343b722949fc7064105329613a7b40f712fa"
+    },
+    "scan": {
+      "status": "passed",
+      "archive": "image.tar",
+      "archive_sha256": "0623021f5f0963138943544df44d8a453371e1308c1f1b80afa3df31e15545b2",
+      "log": "scan.log",
+      "database": {
+        "Version": 2,
+        "NextUpdate": "2026-10-11T18:59:50.889010572Z",
+        "UpdatedAt": "2026-10-10T18:59:50.889010923Z",
+        "DownloadedAt": "2026-10-10T22:29:24.2330198Z"
+      },
+      "command": "W107_TRIVY image --input LAB\\runs\\demo-1\\image.tar --severity CRITICAL --exit-code 7 --format json --output LAB\\runs\\demo-1\\scan-report.json --cache-dir W107_TRIVY_CACHE --cache-backend memory --skip-db-update --offline-scan --scanners vuln --quiet",
+      "scanner_exit": 0,
+      "critical_findings": 0,
+      "scanned_image_id": "sha256:05bedb4362303c8fb981c9a7af001025ae94377f4b9eca6c3c216c9151ccd313"
+    },
+    "publish": {
+      "status": "passed",
+      "receipt": "publication/receipt.json"
+    },
+    "deploy": {
+      "status": "passed",
+      "container": "w107-demo-1",
+      "port": 4317,
+      "log": "deploy.log",
+      "deployed_image_id": "05bedb4362303c8fb981c9a7af001025ae94377f4b9eca6c3c216c9151ccd313",
+      "observed_status": 200,
+      "url": "http://127.0.0.1:4317/"
+    }
+  },
+  "exit": 0,
+  "input_hashes": {
+    "Dockerfile": "a50197845054870d5b2a165d2292651a0698a629a5feb34f327f3be73712599e",
+    "web/index.html": "2dce10f301f77c4c00cf1e00347d343b722949fc7064105329613a7b40f712fa"
+  },
+  "finished": "2026-10-10T22:30:14Z"
+}

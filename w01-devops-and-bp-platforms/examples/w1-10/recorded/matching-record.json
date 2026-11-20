@@ -1,0 +1,17 @@
+{
+  "ts": "2026-10-10T22:56:49.6495241+00:00",
+  "job": "academy-w110",
+  "session": "w110-w110-demo-f5e9",
+  "request_id": "3c79b6ad-3a5c-413f-acfa-64ae4297782d",
+  "action_id": "2578e12e-612b-4193-b3aa-60cedf32467d",
+  "method": "GET",
+  "path": "/api/boards/slow",
+  "status": 200,
+  "result_status": 200,
+  "response_status": 200,
+  "duration_ms": 311,
+  "elapsed_ms": 311,
+  "caller_aborted": true,
+  "release": "foundation-observe-a",
+  "environment": "workshop-blue"
+}

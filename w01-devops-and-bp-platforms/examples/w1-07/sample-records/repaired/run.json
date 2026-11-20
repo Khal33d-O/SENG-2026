@@ -1,0 +1,71 @@
+{
+  "run": "repaired",
+  "started": "2026-10-10T22:30:58Z",
+  "workspace": "LAB\\work\\my-build",
+  "fixture": "starter",
+  "engine": "podman",
+  "commit": "b933a3168d57337cb2b96b3e0096bc12e4db9b1c",
+  "tag": "localhost/academy-w107:b933a3168d57",
+  "image_id": "a1e0700e02256a833e2df2c8e495057f05f2808f1e8223bd677bcaee25290e01",
+  "committed_files": [
+    "Dockerfile",
+    "delivery/harbour.html",
+    "delivery/north-gate.html"
+  ],
+  "working_status": [],
+  "approval": {
+    "release": "Harbour pipeline release",
+    "page_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4"
+  },
+  "stages": {
+    "build": {
+      "status": "passed",
+      "command": "podman build --pull=never --label org.opencontainers.image.revision=b933a3168d57337cb2b96b3e0096bc12e4db9b1c -t localhost/academy-w107:b933a3168d57 -f LAB\\runs\\repaired\\snapshot\\Dockerfile LAB\\runs\\repaired\\snapshot",
+      "context": "LAB\\runs\\repaired\\snapshot",
+      "log": "build.log"
+    },
+    "test": {
+      "status": "passed",
+      "log": "test.log",
+      "observed_status": 200,
+      "observed_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4",
+      "expected_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4"
+    },
+    "scan": {
+      "status": "passed",
+      "archive": "image.tar",
+      "archive_sha256": "81754120016f9699835f848b2c80de85684e35ea7c4695c54d3749b71cd66510",
+      "log": "scan.log",
+      "database": {
+        "Version": 2,
+        "NextUpdate": "2026-10-11T18:59:50.889010572Z",
+        "UpdatedAt": "2026-10-10T18:59:50.889010923Z",
+        "DownloadedAt": "2026-10-10T22:29:24.2330198Z"
+      },
+      "command": "W107_TRIVY image --input LAB\\runs\\repaired\\image.tar --severity CRITICAL --exit-code 7 --format json --output LAB\\runs\\repaired\\scan-report.json --cache-dir W107_TRIVY_CACHE --cache-backend memory --skip-db-update --offline-scan --scanners vuln --quiet",
+      "scanner_exit": 0,
+      "critical_findings": 0,
+      "scanned_image_id": "sha256:a1e0700e02256a833e2df2c8e495057f05f2808f1e8223bd677bcaee25290e01"
+    },
+    "publish": {
+      "status": "passed",
+      "receipt": "publication/receipt.json"
+    },
+    "deploy": {
+      "status": "passed",
+      "container": "w107-repaired",
+      "port": 4317,
+      "log": "deploy.log",
+      "deployed_image_id": "a1e0700e02256a833e2df2c8e495057f05f2808f1e8223bd677bcaee25290e01",
+      "observed_status": 200,
+      "url": "http://127.0.0.1:4317/"
+    }
+  },
+  "exit": 0,
+  "input_hashes": {
+    "delivery/harbour.html": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4",
+    "delivery/north-gate.html": "2b824d79a3c70745d39c22a312b05e4f2e57583a1606c2ba4e8710208cb4d6f0",
+    "Dockerfile": "4e41fcc7efd0513de5124da2830829fd0e0697228c3ac882a3a24f1dfe10ae15"
+  },
+  "finished": "2026-10-10T22:31:11Z"
+}

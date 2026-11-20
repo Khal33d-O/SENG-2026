@@ -1,0 +1,48 @@
+{
+  "run": "first",
+  "started": "2026-10-10T22:29:43Z",
+  "workspace": "LAB\\work\\my-build",
+  "fixture": "starter",
+  "engine": "podman",
+  "commit": "7237c93cf2258341a633f0e8c141fa347426aae7",
+  "tag": "localhost/academy-w107:7237c93cf225",
+  "image_id": null,
+  "committed_files": [
+    "Dockerfile",
+    "delivery/north-gate.html"
+  ],
+  "working_status": [
+    "?? delivery/harbour.html"
+  ],
+  "approval": {
+    "release": "Harbour pipeline release",
+    "page_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4"
+  },
+  "stages": {
+    "build": {
+      "status": "failed",
+      "command": "podman build --pull=never --label org.opencontainers.image.revision=7237c93cf2258341a633f0e8c141fa347426aae7 -t localhost/academy-w107:7237c93cf225 -f LAB\\runs\\first\\snapshot\\Dockerfile LAB\\runs\\first\\snapshot",
+      "context": "LAB\\runs\\first\\snapshot",
+      "log": "build.log",
+      "detail": "build command exited 125; see build.log"
+    },
+    "test": {
+      "status": "skipped"
+    },
+    "scan": {
+      "status": "skipped"
+    },
+    "publish": {
+      "status": "skipped"
+    },
+    "deploy": {
+      "status": "skipped"
+    }
+  },
+  "exit": 10,
+  "input_hashes": {
+    "delivery/north-gate.html": "2b824d79a3c70745d39c22a312b05e4f2e57583a1606c2ba4e8710208cb4d6f0",
+    "Dockerfile": "4e41fcc7efd0513de5124da2830829fd0e0697228c3ac882a3a24f1dfe10ae15"
+  },
+  "finished": "2026-10-10T22:29:45Z"
+}

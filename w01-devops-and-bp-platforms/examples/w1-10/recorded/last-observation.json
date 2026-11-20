@@ -1,0 +1,25 @@
+{
+  "action_id": "2578e12e-612b-4193-b3aa-60cedf32467d",
+  "fixture": "slow",
+  "client": {
+    "deadlineMs": 80,
+    "retries": 0
+  },
+  "browser": "emulated client (no Chromium)",
+  "outcome": "unavailable",
+  "received_status": null,
+  "echoed_request_id": null,
+  "release": null,
+  "environment": null,
+  "action_elapsed_ms": 98,
+  "attempts": [
+    {
+      "request_id": "3c79b6ad-3a5c-413f-acfa-64ae4297782d",
+      "received": false,
+      "status": null,
+      "error": "AbortError",
+      "elapsed_ms": 98
+    }
+  ],
+  "recorded": "2026-10-10T22:56:49Z"
+}

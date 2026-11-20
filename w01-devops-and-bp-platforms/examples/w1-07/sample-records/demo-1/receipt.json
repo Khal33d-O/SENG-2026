@@ -1,0 +1,10 @@
+{
+  "commit": "b7dd81ce9bed691b04bbc1b7a8eb333ce2c6000f",
+  "tag": "localhost/academy-w107:b7dd81ce9bed",
+  "image_id": "05bedb4362303c8fb981c9a7af001025ae94377f4b9eca6c3c216c9151ccd313",
+  "archive": "publication/image.tar",
+  "archive_sha256": "0623021f5f0963138943544df44d8a453371e1308c1f1b80afa3df31e15545b2",
+  "scanned_archive_sha256": "0623021f5f0963138943544df44d8a453371e1308c1f1b80afa3df31e15545b2",
+  "published": "2026-10-10T22:30:10Z",
+  "destination": "local directory only (no registry)"
+}
