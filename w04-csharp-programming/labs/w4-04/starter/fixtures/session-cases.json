@@ -1,0 +1,230 @@
+{
+  "cases": [
+    {
+      "id": "C01",
+      "description": "Construction keeps a positive allowance",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": []
+    },
+    {
+      "id": "C02",
+      "description": "Negative construction normalises to zero; spending then refuses",
+      "initialMoves": -3,
+      "expected": {
+        "remaining": 0,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "spend",
+          "amount": 1,
+          "expected": {
+            "result": false,
+            "remaining": 0,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "description": "Ordinary spend within the unreserved allowance",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "spend",
+          "amount": 2,
+          "expected": {
+            "result": true,
+            "remaining": 4,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "description": "Reserve, then release with zero",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 3,
+          "expected": {
+            "result": true,
+            "remaining": 6,
+            "reserved": 3
+          }
+        },
+        {
+          "op": "reserve",
+          "amount": 0,
+          "expected": {
+            "result": true,
+            "remaining": 6,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "description": "Spend exactly the available allowance",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "spend",
+          "amount": 6,
+          "expected": {
+            "result": true,
+            "remaining": 0,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "description": "Reserve everything; ordinary spending must refuse",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 6,
+          "expected": {
+            "result": true,
+            "remaining": 6,
+            "reserved": 6
+          }
+        },
+        {
+          "op": "spend",
+          "amount": 1,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "description": "Invalid individual requests: reserve beyond remaining, spend zero",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 7,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        },
+        {
+          "op": "spend",
+          "amount": 0,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "description": "Taught nonconflicting sequence: reserve 2, spend 1",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 2,
+          "expected": {
+            "result": true,
+            "remaining": 6,
+            "reserved": 2
+          }
+        },
+        {
+          "op": "spend",
+          "amount": 1,
+          "expected": {
+            "result": true,
+            "remaining": 5,
+            "reserved": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "description": "Spend beyond the remaining allowance",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "spend",
+          "amount": 7,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "description": "Zero allowance: reserving zero is legal",
+      "initialMoves": 0,
+      "expected": {
+        "remaining": 0,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 0,
+          "expected": {
+            "result": true,
+            "remaining": 0,
+            "reserved": 0
+          }
+        }
+      ]
+    }
+  ]
+}

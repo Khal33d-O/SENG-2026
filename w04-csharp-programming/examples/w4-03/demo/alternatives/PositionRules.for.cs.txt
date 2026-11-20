@@ -1,0 +1,27 @@
+// Complete for-loop alternative: passes the same 39 assertions.
+// Copy over Rules/PositionRules.cs in a disposable copy only.
+// Supplied, complete Boolean predicate (W4.03). Do not rewrite it in the lab.
+// An open position is inside the board and absent from the wall array. The bounds check runs
+// before wall inspection; a matching wall returns false; a non-matching wall proves nothing about
+// later walls, so the open result belongs after the entire search.
+// It does NOT check adjacency, the move budget, treasure collection or game completion.
+namespace TreasureRules;
+
+public static class PositionRules
+{
+    public static bool IsOpenPosition(
+        Board board, Position candidate)
+    {
+        bool inBounds = candidate.X >= 0 && candidate.X < board.Width &&
+                        candidate.Y >= 0 && candidate.Y < board.Height;
+        bool blocked = false;
+        for (int index = 0; index < board.Walls.Length; index++)
+        {
+            if (board.Walls[index].X == candidate.X && board.Walls[index].Y == candidate.Y)
+            {
+                blocked = true;
+            }
+        }
+        return inBounds && !blocked;
+    }
+}

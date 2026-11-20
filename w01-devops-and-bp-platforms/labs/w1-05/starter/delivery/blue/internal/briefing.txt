@@ -1,0 +1,2 @@
+INTERNAL TEST FIXTURE (fabricated data). Must not be copied into the server's document tree or served.
+fixture-id: w105-internal-0001

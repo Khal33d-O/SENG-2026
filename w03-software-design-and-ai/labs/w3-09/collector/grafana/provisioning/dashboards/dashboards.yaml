@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: w309
+    folder: Academy W3.09
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

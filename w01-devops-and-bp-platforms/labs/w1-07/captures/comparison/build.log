@@ -1,0 +1,13 @@
+$ podman build --pull=never --label org.opencontainers.image.revision=d25bf7a4055e5b31faf51ff4926f0d575975d926 -t localhost/academy-w107:d25bf7a4055e -f LAB\runs\comparison-2\snapshot\Dockerfile LAB\runs\comparison-2\snapshot
+STEP 1/3: FROM docker.io/library/nginx:1.30.4-trixie@sha256:d5792f71a9496b833bc08ea834a758c46e2b6a6306c10f4be926f38a656cdc1c
+STEP 2/3: COPY delivery/harbour.html /usr/share/nginx/html/index.html
+--> Using cache 297abc6089c2bc5ab4d1551fa9aff696ddc06df09621732372d68da532999936
+--> 297abc6089c2
+STEP 3/3: LABEL "org.opencontainers.image.revision"="d25bf7a4055e5b31faf51ff4926f0d575975d926"
+--> Using cache 5cd4150fc359b57173c5f42594644a8d103a0597c21a3ad14f4217f085410105
+COMMIT localhost/academy-w107:d25bf7a4055e
+--> 5cd4150fc359
+Successfully tagged localhost/academy-w107:d25bf7a4055e
+5cd4150fc359b57173c5f42594644a8d103a0597c21a3ad14f4217f085410105
+
+[exit 0]

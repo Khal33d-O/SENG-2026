@@ -1,0 +1,21 @@
+{
+  "id": "L01",
+  "description": "Learner case: east then west returns to the start and spends two moves",
+  "board": "reference",
+  "state": null,
+  "actions": [
+    { "type": "move", "direction": "east" },
+    { "type": "move", "direction": "west" }
+  ],
+  "expected": {
+    "accepted": true,
+    "reason": null,
+    "state": {
+      "position": { "x": 0, "y": 0 },
+      "movesRemaining": 4,
+      "score": 0,
+      "collected": [],
+      "status": "playing"
+    }
+  }
+}

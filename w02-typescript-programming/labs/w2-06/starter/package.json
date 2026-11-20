@@ -1,0 +1,22 @@
+{
+  "name": "w2-06-board-request",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.06 HTTP requests, asynchronous code and validation: retrieve checked board data while local play remains usable.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && node tools/serve.mjs",
+    "test:rules": "node --test tests/rules.test.mjs",
+    "check:baseline": "npm run build && npm run test:rules && playwright test --grep @baseline",
+    "test": "npm run build && npm run test:rules && playwright test",
+    "clean": "node tools/clean.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "typescript": "5.9.3"
+  }
+}

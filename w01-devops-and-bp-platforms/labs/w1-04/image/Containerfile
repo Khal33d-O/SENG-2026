@@ -1,0 +1,15 @@
+# Facilitator preparation of localhost/academy-w104:10.0.12 (the supplied W1.04 image).
+# Build with:  python3 lab.py prepare      (or: podman build -t localhost/academy-w104:10.0.12 -f image/Containerfile image)
+# Stage 1 compiles the supplied foundation application; stage 2 is the ASP.NET 10.0.12 runtime image.
+FROM mcr.microsoft.com/dotnet/sdk:10.0.401@sha256:e70cdb7f80b0348f5cb85f19a8f670fca061f033d57eed12fa003d58b0e06317 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish Foundation.csproj -c Release -o /publish --nologo
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.12@sha256:222759b391a1aaf241166672c8f99b2d4ada452e7b5319f3c6e8f265a37b5ad4
+WORKDIR /app
+COPY --from=build /publish/ ./
+# Normal profile: the application listens on container port 8080.
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Foundation.dll"]

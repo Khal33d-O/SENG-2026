@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academy treasure hunt</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Academy treasure hunt</h1>
+    <p class="lead">Week 5: the browser requests actions; the .NET API decides and stores the outcome.</p>
+
+    <section class="controls" aria-label="Session">
+      <button id="new-game" type="button">New game</button>
+      <label>Session ID <input id="session-id" autocomplete="off" spellcheck="false" size="34"></label>
+      <button id="load-session" type="button">Load session</button>
+    </section>
+
+    <section class="play">
+      <div id="board" class="board" role="grid" aria-label="Board"></div>
+      <div class="side">
+        <div class="moves" aria-label="Moves">
+          <button data-direction="north" type="button">North</button>
+          <button data-direction="west" type="button">West</button>
+          <button data-direction="east" type="button">East</button>
+          <button data-direction="south" type="button">South</button>
+        </div>
+        <button id="hint" type="button">Hint</button>
+        <p id="hint-result" class="hint" hidden></p>
+        <label class="fail"><input id="fail-next" type="checkbox"> Fail next save (needs TRAINING_FAILURES=1)</label>
+        <dl id="state" class="state">
+          <dt>Position</dt><dd data-field="position">-</dd>
+          <dt>Moves remaining</dt><dd data-field="movesRemaining">-</dd>
+          <dt>Score</dt><dd data-field="score">-</dd>
+          <dt>Collected</dt><dd data-field="collected">-</dd>
+          <dt>Status</dt><dd data-field="status">-</dd>
+        </dl>
+        <p id="busy" class="busy" hidden>Waiting for the server...</p>
+        <p id="error" class="error" role="alert" hidden></p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

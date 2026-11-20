@@ -1,0 +1,24 @@
+{
+  "name": "w2-05-browser-controls",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.05 Browser events and rendering from state: connect buttons and arrow keys to the treasure-hunt rule.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && node tools/serve.mjs",
+    "serve": "node tools/serve.mjs",
+    "test:rules": "node --test tests/rules.test.mjs",
+    "test:browser": "playwright test",
+    "check:baseline": "npm run build && npm run test:rules && playwright test --grep @baseline",
+    "test": "npm run build && npm run test:rules && playwright test",
+    "clean": "node tools/clean.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

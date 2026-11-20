@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP response inspection</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>HTTP response inspection</h1>
+  <p>Worked Example 1. Sends <code>GET /api/boards/reference</code> and shows the response
+     <strong>as text</strong>. Nothing here treats the body as an application object.</p>
+  <p class="hint">The response follows the current response condition. Return to the
+     <a href="../index.html">game</a> before choosing a fixture; the default is the valid reference.</p>
+  <button type="button" id="inspect">Fetch and inspect</button>
+  <p id="inspect-status" role="status">Not requested yet.</p>
+  <dl>
+    <dt>Status</dt><dd id="http-status">-</dd>
+    <dt>Content-Type</dt><dd id="content-type">-</dd>
+  </dl>
+  <h2>Body (text)</h2>
+  <pre id="body-text">-</pre>
+
+  <script type="module">
+    // Complete example: two awaits, one for the Response and one for its body text.
+    const button = document.querySelector("#inspect");
+
+    async function inspect() {
+      const status = document.querySelector("#inspect-status");
+      status.textContent = "Loading";
+      try {
+        const response = await fetch("/api/boards/reference"); // a Response (HTTP outcome)
+        const text = await response.text();                       // the body as a string
+        document.querySelector("#http-status").textContent =
+          response.status + (response.ok ? " (ok)" : " (not ok)");
+        document.querySelector("#content-type").textContent = response.headers.get("content-type") ?? "(none)";
+        document.querySelector("#body-text").textContent = text;
+        status.textContent = "Response received";
+      } catch (error) {
+        status.textContent = "Failure: " + (error instanceof Error ? error.message : "Unexpected failure");
+      }
+    }
+
+    button.addEventListener("click", () => void inspect());
+  </script>
+</body>
+</html>

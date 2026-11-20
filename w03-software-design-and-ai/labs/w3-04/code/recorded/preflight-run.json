@@ -1,0 +1,22 @@
+{
+  "_label": "Recorded preflight (teaching record): the process exited 0 after denied reads and made no edit.",
+  "events": [
+    {
+      "type": "read",
+      "path": "/workspace/contract.md",
+      "decision": "deny",
+      "note": "configured allow entry used a different path root"
+    },
+    {
+      "type": "read",
+      "path": "/workspace/src/rules.ts",
+      "decision": "deny"
+    },
+    {
+      "type": "message",
+      "text": "I could not read the contract or the rule, so I made no change. The task is unfinished."
+    }
+  ],
+  "processExit": 0,
+  "filesChanged": []
+}

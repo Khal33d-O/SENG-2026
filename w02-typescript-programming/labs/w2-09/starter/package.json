@@ -1,0 +1,21 @@
+{
+  "name": "w2-09-integrated-application",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.09 Application integration and observability: connect input, rules, rendering, API and a local event, then fix a state/render mismatch.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && node tools/serve.mjs",
+    "check:rules": "npm run build && node --test tests/rules.test.mjs",
+    "check:baseline": "npm run check:rules && playwright test --grep @baseline",
+    "test": "npm run check:rules && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "typescript": "5.9.3"
+  }
+}

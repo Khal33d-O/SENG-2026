@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Course pin: .NET SDK 10.0.401, C# 14, net10.0. No NuGet packages are needed. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TreasureRules</RootNamespace>
+    <!-- Keep full debug symbols so stack traces show file names and line numbers. -->
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+</Project>

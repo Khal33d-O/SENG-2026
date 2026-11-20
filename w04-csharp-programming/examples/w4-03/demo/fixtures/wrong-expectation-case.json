@@ -1,0 +1,16 @@
+{
+  "kind": "position",
+  "board": "reference",
+  "note": "DELIBERATELY WRONG expectation: (0,1) is open, but expected says false.",
+  "cases": [
+    {
+      "id": "W01",
+      "description": "Open position with a deliberately wrong expected value",
+      "candidate": {
+        "x": 0,
+        "y": 1
+      },
+      "expected": false
+    }
+  ]
+}

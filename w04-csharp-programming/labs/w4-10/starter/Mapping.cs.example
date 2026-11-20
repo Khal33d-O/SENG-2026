@@ -1,0 +1,23 @@
+// Mapping.cs.example - read before writing the serialization line (this file is not compiled).
+//
+// TypeScript (W2)                        JSON fixture / wire                  C# record (this library)
+// position: { x: number; y: number }     "position":{"x":1,"y":0}             Position(1, 0)  -> Position.X, Position.Y
+// movesRemaining: number                 "movesRemaining": 5                  GameState.MovesRemaining
+// collected: string[]                    "collected": ["t1"]                  GameState.Collected   (book: CollectedTreasureIds)
+// status: "playing" | "won" | "lost"     "status": "playing"                  GameState.Status
+// action: { type, direction? }           { "type": "move", "direction": "east" }   MoveAction(Type, Direction)
+// reason: string | null                  "reason": null                       MoveResult.Reason
+//
+// JSON carries values, not TypeScript annotations or C# declarations. The supplied options
+// (FixtureLoader.Json = BoardJson.Options) read names case-insensitively AND write camelCase:
+//
+//     JsonSerializerOptions options = new()
+//     {
+//         PropertyNameCaseInsensitive = true,                 // reading: "MovesRemaining" or "movesRemaining"
+//         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,  // writing: MovesRemaining -> "movesRemaining"
+//     };
+//
+// Reading:  MoveAction? action = JsonSerializer.Deserialize<MoveAction>(text, options);
+//           { "type": "move" } with no direction -> Direction == null -> rejected as INVALID_ACTION.
+// Writing:  JsonSerializer.Serialize(value, options) -> {"accepted":true,"state":{...},"reason":null}
+//           Without the options the names stay PascalCase ("Accepted", "State") and compare.py fails.

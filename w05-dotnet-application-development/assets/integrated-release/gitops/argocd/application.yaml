@@ -1,0 +1,19 @@
+# Template for the facilitator. repoURL is the prepared classroom Git daemon from W1.08
+# (pending / facilitator-supplied). Learners never edit this file or copy kubeconfig into their work.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: academy-w5
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: FACILITATOR-SUPPLIED-GIT-URL
+    targetRevision: main
+    path: apps/academy-w5
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: academy-w5
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local event view</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Local event view</h1>
+  <p>Rows are kept in the local server's memory until it stops. This is local course infrastructure, not Grafana
+    or BP telemetry. <a href="index.html">Back to the application</a></p>
+  <form id="filter-form">
+    <label for="run-filter">Run ID</label>
+    <input id="run-filter" autocomplete="off">
+    <button type="submit">Filter</button>
+    <button type="button" id="refresh">Refresh</button>
+  </form>
+  <p id="summary" role="status">Not loaded</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Run ID</th><th scope="col">Sequence</th><th scope="col">Action</th>
+        <th scope="col">Source</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <script type="module" src="dist/event-view.js"></script>
+</body>
+</html>

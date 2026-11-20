@@ -1,0 +1,24 @@
+{
+  "name": "w2-01-label-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.01 worked examples: inspection page and the Demo ready label update.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && node tools/serve.mjs",
+    "test": "npm run build && playwright test",
+    "check:baseline": "npm run build && playwright test --grep @baseline",
+    "run:portable": "node dist/portable.js",
+    "run:node": "node dist/main.js",
+    "page:current": "node tools/select-page.mjs current",
+    "page:previous": "node tools/select-page.mjs previous"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asynchronous message request</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>Asynchronous message request</h1>
+  <p>Worked Example 2. Both responses contain valid JSON. This example's contract accepts a
+     <strong>text</strong> message only. Back to the <a href="../index.html">game</a>.</p>
+  <button type="button" id="valid">Valid message</button>
+  <button type="button" id="wrong">Wrong message type</button>
+  <p id="message-output" role="status">Idle</p>
+
+  <script type="module">
+    // Complete example: check HTTP status, await the parsed value, check the object
+    // and its message property, then update the output. catch displays the failure.
+    const output = document.querySelector("#message-output");
+
+    async function readMessage(path) {
+      output.textContent = "Loading";
+      try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const value = await response.json();               // parsed, shape not yet established
+        if (typeof value !== "object" || value === null || typeof value.message !== "string") {
+          throw new Error("Invalid message");
+        }
+        output.textContent = value.message;                // only a checked string is displayed
+      } catch (error) {
+        output.textContent = "Failure: " + (error instanceof Error ? error.message : "Unexpected failure");
+      }
+    }
+
+    document.querySelector("#valid").addEventListener("click", () => void readMessage("/api/demo/message?case=valid"));
+    document.querySelector("#wrong").addEventListener("click", () => void readMessage("/api/demo/message?case=wrong-type"));
+  </script>
+</body>
+</html>

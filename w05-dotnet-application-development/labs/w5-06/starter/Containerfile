@@ -1,0 +1,16 @@
+# Supplied container recipe for the Week 5 API. release.py pipeline publishes the API first
+# (dotnet publish Api/Api.csproj -c Release -o publish) and builds this file with the publish
+# output as context, adding a unique tag and the OCI revision label for the source commit.
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.2
+WORKDIR /app
+COPY publish/ ./
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080 \
+    STORE=sqlite \
+    GAME_DB=/data/game.db
+EXPOSE 8080
+# /data is the mounted, retained volume (game.db plus -wal/-shm sidecars). Create it owned by the
+# non-root user supplied by the .NET image, then drop to that user.
+USER root
+RUN mkdir -p /data && chown $APP_UID:$APP_UID /data
+USER $APP_UID
+ENTRYPOINT ["dotnet", "Api.dll"]

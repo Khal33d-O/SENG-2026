@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W2.02 State preview report</title>
+  <link rel="stylesheet" href="report/report.css">
+</head>
+<body>
+  <main>
+    <h1>State preview report</h1>
+    <p>Runs <code>dist/calculate.js</code> in the browser for every public case in <code>cases.mjs</code>.
+      Rebuild (<code>npm run build</code>) and reload after editing <code>src/calculate.ts</code>.</p>
+    <p id="summary" role="status" aria-live="polite">Loading the calculation&hellip;</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Preview table (scrolls horizontally)">
+      <table id="report">
+        <caption>Original, preview and identity for each case</caption>
+        <thead>
+          <tr>
+            <th scope="col">Case</th>
+            <th scope="col">Requested / points</th>
+            <th scope="col">Original (after call)</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Expected</th>
+            <th scope="col">Identity</th>
+            <th scope="col">Result</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+  <script type="module" src="report/report.js"></script>
+</body>
+</html>

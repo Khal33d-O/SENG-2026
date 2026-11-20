@@ -1,0 +1,17 @@
+# Supplied build recipe for the foundation page and API.
+# Input: the files produced by `dotnet publish -c Release -o publish` (run first, from this folder).
+# The base image is pinned by digest so the runtime layer cannot change silently.
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.12@sha256:222759b391a1aaf241166672c8f99b2d4ada452e7b5319f3c6e8f265a37b5ad4
+
+WORKDIR /app
+
+# Copy the already-published application into the image. Later edits to Program.cs on
+# your laptop do NOT change an image built from these copied files.
+COPY publish/ ./
+
+# The listener inside the container is port 8080.
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+EXPOSE 8080
+
+# Start the packaged program. LAB_ENV is supplied separately when the container starts.
+ENTRYPOINT ["dotnet", "Foundation.dll"]

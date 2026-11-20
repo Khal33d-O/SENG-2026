@@ -1,0 +1,7 @@
+bin/
+obj/
+TestResults/
+__pycache__/
+node_modules/
+typescript/node_modules/
+typescript/dist/

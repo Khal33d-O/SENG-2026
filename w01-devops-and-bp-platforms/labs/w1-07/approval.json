@@ -1,0 +1,19 @@
+{
+  "_comment": "Supplied test input: approved release and page SHA-256 per fixture. Outside the learner's permitted edits.",
+  "demo": {
+    "release": "Equipment release blue",
+    "page_sha256": "2dce10f301f77c4c00cf1e00347d343b722949fc7064105329613a7b40f712fa"
+  },
+  "guided": {
+    "release": "Equipment release guided",
+    "page_sha256": "e8dd04f5ea8cc0bdc16a2d18e170981f3094d72009d8c2ef00393073d4bae618"
+  },
+  "starter": {
+    "release": "Harbour pipeline release",
+    "page_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4"
+  },
+  "blocked": {
+    "release": "Harbour pipeline release",
+    "page_sha256": "fda9a30c1b861cf6f8d83f9f7e6ab20c36ad3da0f31d354690fa8decad2ddcc4"
+  }
+}

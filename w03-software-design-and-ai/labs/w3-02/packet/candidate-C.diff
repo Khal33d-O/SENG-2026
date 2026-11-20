@@ -1,0 +1,28 @@
+--- baseline/src/rules.ts
++++ candidate-c/src/rules.ts
+@@ -32,13 +32,12 @@
+ 
+ export function evaluateMove(state: State, direction: Direction): MoveResult {
+   if (state.status !== 'playing') return { accepted: false, state, reason: 'GAME_COMPLETE' };
+-  const step = typeof direction === 'string' && Object.hasOwn(STEPS, direction) ? STEPS[direction] : undefined;
++  const step = Object.hasOwn(STEPS, direction) ? STEPS[direction] : undefined;
+   if (!step) return { accepted: false, state, reason: 'INVALID_ACTION' };
+   const position = { x: state.position.x + step.x, y: state.position.y + step.y };
+   const blocked = isBlocked(position);
+-  // Known Week 3 baseline defect: a rejected (blocked) action still spends one move.
+   if (blocked) return {
+-    accepted: false, state: { ...state, movesRemaining: state.movesRemaining - 1 }, reason: 'ILLEGAL_ACTION'
++    accepted: false, state, reason: 'ILLEGAL_ACTION'
+   };
+ 
+   // Accepted: one move, first collection of t1 adds its value once, win before zero-budget loss.
+@@ -50,7 +49,8 @@
+       score += t.value;
+     }
+   }
+-  const movesRemaining = state.movesRemaining - 1;
++  const treasure = collected.length > state.collected.length;
++  const movesRemaining = state.movesRemaining - (treasure ? 0 : 1);
+   const allCollected = BOARD.treasures.every((t) => collected.includes(t.id));
+   const atExit = position.x === BOARD.exit.x && position.y === BOARD.exit.y;
+   const status: Status = atExit && allCollected ? 'won' : movesRemaining === 0 ? 'lost' : 'playing';

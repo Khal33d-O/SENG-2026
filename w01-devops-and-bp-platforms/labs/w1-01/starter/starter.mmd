@@ -1,0 +1,25 @@
+%% W1.01 starting diagram (partly completed). You own this file: edit LABELS, keep element NAMES.
+%% Arrow text between vertical bars labels the message. This file is diagram syntax; it does not call the API.
+flowchart LR
+  subgraph Laptop["Prepared local computer (one machine, separate execution locations)"]
+    Browser["Browser: runs the supplied page script (app.js)"]
+    Api["API process: ___ (where does the server code run?)"]
+  end
+
+  %% Runtime messages (happen when you press Load board)
+  Browser -->|GET /api/boards/reference|Api
+  Api -->|"___ status + body field ___"|Browser
+
+  %% Preparation (happens BEFORE the container starts) - keep separate from HTTP arrows
+  subgraph Preparation["Preparation side (not HTTP)"]
+    Source["Program.cs (release label ___)"]
+    Recipe["Containerfile"]
+    Image["Image ___ (image ID ___)"]
+    Settings["runtime.env (LAB_ENV=___)"]
+  end
+  Source -.->|"___"| Recipe
+  Recipe -.->|"___"| Image
+  Image -.->|"___"| Api
+  Settings -.->|"___"| Api
+
+  %% Changed case (Task 3): add the Missing board request here, labelled with its observed status/body.

@@ -1,0 +1,20 @@
+/* Supplied presentation: text carries every meaning; readable at 200% zoom. */
+body { font-family: system-ui, sans-serif; margin: 1rem; line-height: 1.4; color: #111; background: #fff; }
+main { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+.board { display: grid; grid-template-columns: repeat(3, 5.5rem); gap: 4px; margin: 0.5rem 0; }
+.cell { height: 4rem; display: flex; align-items: center; justify-content: center; border: 2px solid #333; }
+.cell-player { background: #ffe066; font-weight: bold; }
+.cell-wall { background: #444; color: #fff; }
+.cell-treasure { background: #b2f2bb; }
+.cell-exit { background: #a5d8ff; }
+.fields { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 1rem; }
+.fields dt { font-weight: bold; }
+.fields dd { margin: 0; font-family: ui-monospace, Consolas, monospace; }
+button { padding: 0.45rem 0.9rem; margin: 0.2rem; font-size: 1rem; }
+button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid #1c7ed6; outline-offset: 2px; }
+label { display: block; margin-top: 1rem; font-weight: bold; }
+textarea { width: 100%; max-width: 28rem; font-size: 1rem; }
+.hint { color: #444; font-size: 0.9rem; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #999; padding: 0.3rem 0.5rem; text-align: left; }

@@ -1,0 +1,29 @@
+
+> w2-10-playable-slice-plan@1.0.0 plan
+> node tools/plan-check.mjs
+
+PASS plan.json: handoff panel-record; enhancements item-labels, keyboard; estimate 8 of 8 units
+
+Completion witness (fresh session from the public start):
+  start      position (0,0) · moves 6 · score 0 · collected none · playing
+   1 east   accepted
+       shown    position (1,0) · moves 5 · score 0 · collected none · playing
+       retained position (1,0) · moves 5 · score 0 · collected none · playing
+   2 east   accepted
+       shown    position (2,0) · moves 4 · score 10 · collected t1 · playing
+       retained position (2,0) · moves 4 · score 10 · collected none · playing
+   3 south  accepted
+       shown    position (2,1) · moves 3 · score 10 · collected none · playing
+       retained position (2,1) · moves 3 · score 10 · collected none · playing
+   4 south  accepted
+       shown    position (2,2) · moves 2 · score 10 · collected none · playing
+       retained position (2,2) · moves 2 · score 10 · collected none · playing
+FAIL completion: expected won at (2,2) with every treasure collected; final position (2,2) · moves 2 · score 10 · collected none · playing
+
+Invalid-action example (another fresh session):
+  Given      position (1,0) · moves 5 · score 0 · collected none · playing  (prefix: east)
+  When       south -> rejected WALL
+  Then       position (1,0) · moves 5 · score 0 · collected none · playing
+PASS invalid example: south rejected (WALL) while playing; every field unchanged
+
+1 plan check(s) failed

@@ -1,0 +1,9 @@
+# Supplied hint-server image (simulated model only; no keys). Built by the facilitator for the
+# classroom deployment; the local reconcile in release.py builds it on demand.
+FROM docker.io/library/node:22.23.2-alpine
+WORKDIR /hint
+COPY server.mjs treasure-rules.mjs ./
+ENV HINT_PORT=5056 HINT_MODE=timeout
+EXPOSE 5056
+USER node
+CMD ["node", "server.mjs"]

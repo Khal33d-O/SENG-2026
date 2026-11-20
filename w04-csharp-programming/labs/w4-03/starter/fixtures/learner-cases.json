@@ -1,0 +1,33 @@
+{
+  "kind": "candidate",
+  "board": "reference",
+  "pool": [
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 2
+    }
+  ],
+  "instructions": "Complete both cases: each 'candidates' array must be an ordering of the whole pool; the two expected positions must differ; at least one case must start with a blocked candidate. Calculate each expected position from the selection contract before running.",
+  "cases": [
+    {
+      "id": "L01",
+      "description": "TODO: your first order of the pool",
+      "candidates": [],
+      "expected": null
+    },
+    {
+      "id": "L02",
+      "description": "TODO: your second order of the pool",
+      "candidates": [],
+      "expected": null
+    }
+  ]
+}

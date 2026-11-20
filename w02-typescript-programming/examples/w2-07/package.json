@@ -1,0 +1,17 @@
+{
+  "name": "w2-07-examples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "demo:bare": "npm run build && node demos/bare-assertion.mjs",
+    "demo:named": "npm run build && node --test --test-reporter=spec tests/conversion.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  // Retained lab configuration. Do not change it during the lesson.
+  // "Bundler" resolution lets an extensionless import compile, but Node needs the
+  // explicit ".js" spelling at runtime, so keep the ".js" imports in the supplied files.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    // DOM is listed only because it declares `console`; no browser is used in this lab.
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "noEmitOnError": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts", "demos/**/*.ts"]
+}

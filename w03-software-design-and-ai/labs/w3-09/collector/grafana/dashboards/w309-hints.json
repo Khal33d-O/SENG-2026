@@ -1,0 +1,36 @@
+{
+  "uid": "w309-hints",
+  "title": "W3.09 hint request events",
+  "schemaVersion": 39,
+  "time": { "from": "now-30m", "to": "now" },
+  "templating": {
+    "list": [
+      { "name": "session", "type": "textbox", "label": "Session", "query": "learner-01", "current": { "text": "learner-01", "value": "learner-01" } },
+      { "name": "requestId", "type": "textbox", "label": "Request ID", "query": "", "current": { "text": "", "value": "" } }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "logs",
+      "title": "Terminal event for the selected request ID",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 12 },
+      "datasource": { "type": "loki", "uid": "w309-loki" },
+      "targets": [
+        { "refId": "A", "datasource": { "type": "loki", "uid": "w309-loki" },
+          "expr": "{job=\"academy-w309\", session=\"$session\"} | json | requestId = \"$requestId\"" }
+      ],
+      "options": { "showTime": true, "wrapLogMessage": true }
+    },
+    {
+      "id": 2,
+      "type": "logs",
+      "title": "All hint events in this session and time range (do not diagnose from the newest row)",
+      "gridPos": { "x": 0, "y": 12, "w": 24, "h": 10 },
+      "datasource": { "type": "loki", "uid": "w309-loki" },
+      "targets": [
+        { "refId": "A", "datasource": { "type": "loki", "uid": "w309-loki" }, "expr": "{job=\"academy-w309\", session=\"$session\"}" }
+      ]
+    }
+  ]
+}

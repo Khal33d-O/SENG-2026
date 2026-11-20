@@ -1,0 +1,25 @@
+{
+  "name": "w2-02-state-preview",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.02 lab: calculate a typed state preview with conditions and a counted loop.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check:baseline": "npm run build && node --test tests/baseline.test.mjs",
+    "test": "npm run build && node --test tests/calculate.test.mjs",
+    "show": "npm run build --silent && node tools/show.mjs",
+    "demo:object": "npm run build --silent && node dist/demo-object.js",
+    "demo:boundary": "npm run build --silent && node dist/demo-boundary.js",
+    "practice": "npm run build --silent && node dist/practice.js",
+    "start": "npm run build && node tools/serve.mjs",
+    "check:browser": "npm run build && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "typescript": "5.9.3"
+  }
+}

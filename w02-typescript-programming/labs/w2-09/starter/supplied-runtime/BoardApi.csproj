@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- Supplied local board API for W2.09. Learners do not edit this project. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Byte-identical copy of source/shared/fixtures/board-reference.json -->
+    <None Update="board-reference.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

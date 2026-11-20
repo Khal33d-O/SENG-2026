@@ -1,0 +1,6 @@
+{
+  "_metadata": "W1.04 guided rehearsal: a known-good route. Supplied; ignored by the runner.",
+  "host_ip": "127.0.0.1",
+  "host_port": 9102,
+  "container_port": 8080
+}

@@ -1,0 +1,21 @@
+{
+  "name": "w3-03-specification",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test tests/claim.test.mjs",
+    "regression": "tsc -p tsconfig.json && node regression.mjs",
+    "demo:red": "tsc -p tsconfig.json && node demo.mjs demo-red",
+    "demo:green": "tsc -p tsconfig.json && node demo.mjs demo-green",
+    "demo:refactor": "tsc -p tsconfig.json && node demo.mjs demo-refactor"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3"
+  }
+}

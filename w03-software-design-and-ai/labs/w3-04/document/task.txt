@@ -1,0 +1,9 @@
+Write your own bounded task instruction here (W3.04 Task 2), in your own words:
+
+- Defect and independently expected result:
+- Relevant context (files) and one item you excluded or challenged:
+- Editable file:
+- Fixed behaviour:
+- Available tools / denied operations:
+- Stopping condition:
+- Independent completion checks:

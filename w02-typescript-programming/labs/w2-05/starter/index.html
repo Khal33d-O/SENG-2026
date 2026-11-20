@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>W2.05 Treasure hunt controls</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- SUPPLIED markup. Your adapter is src/controls.ts, compiled to dist/controls.js. -->
+    <script type="module" src="dist/controls.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Treasure hunt</h1>
+      <nav aria-label="Demonstrations">
+        <a href="demos/button-event.html">Button event demonstration</a> ·
+        <a href="demos/shared-action.html">Shared action demonstration</a>
+      </nav>
+    </header>
+
+    <main>
+      <section aria-labelledby="board-heading">
+        <h2 id="board-heading">Board</h2>
+        <!-- Nine tiles. Coordinates start at the top left: x rightwards, y downwards. -->
+        <div id="board" role="group" aria-label="Treasure hunt board, 3 by 3">
+          <div class="tile" data-x="0" data-y="0" data-label="Start"></div>
+          <div class="tile" data-x="1" data-y="0" data-label=""></div>
+          <div class="tile treasure" data-x="2" data-y="0" data-label="Treasure" data-treasure="t1"></div>
+          <div class="tile" data-x="0" data-y="1" data-label=""></div>
+          <div class="tile wall" data-x="1" data-y="1" data-label="Wall"></div>
+          <div class="tile" data-x="2" data-y="1" data-label=""></div>
+          <div class="tile" data-x="0" data-y="2" data-label=""></div>
+          <div class="tile" data-x="1" data-y="2" data-label=""></div>
+          <div class="tile exit" data-x="2" data-y="2" data-label="Exit"></div>
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+        <p id="score"></p>
+      </section>
+
+      <section aria-labelledby="controls-heading">
+        <h2 id="controls-heading">Direction controls</h2>
+        <p>Use the buttons, or the arrow keys when focus is not in a text field.</p>
+        <div class="directions">
+          <button id="north" type="button">North</button>
+          <button id="west" type="button">West</button>
+          <button id="east" type="button">East</button>
+          <button id="south" type="button">South</button>
+        </div>
+        <p>
+          <button id="new-game" type="button">New game</button>
+          <button id="final-approach" type="button">Final approach</button>
+        </p>
+      </section>
+
+      <section aria-labelledby="inspect-heading">
+        <details>
+          <summary id="inspect-heading">Inspect the supplied state</summary>
+          <p>Shows a copy of the retained state and the move-rule call count. It never applies a move.</p>
+          <button id="read-diagnostics" type="button">Read diagnostics</button>
+          <pre id="diagnostics" aria-live="polite">Not read yet</pre>
+        </details>
+      </section>
+
+      <section aria-labelledby="notes-heading">
+        <h2 id="notes-heading">Notes (typing here must never move the player)</h2>
+        <p><label>Player notes <input id="player-notes" type="text" /></label></p>
+        <p><label>Longer note <textarea id="longer-note" rows="3">First line
+Second line</textarea></label></p>
+        <p>
+          <label>Selector
+            <select id="selector">
+              <option>First option</option>
+              <option>Second option</option>
+              <option>Third option</option>
+            </select>
+          </label>
+        </p>
+        <p id="editable-label">Editable note</p>
+        <div id="editable-note" contenteditable="true" aria-labelledby="editable-label">
+          This note is editable, <span id="nested-span">including this nested span</span>.
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

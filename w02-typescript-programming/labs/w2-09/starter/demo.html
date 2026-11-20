@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasure hunt: complete demonstration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Treasure hunt: complete demonstration</h1>
+    <p>Complete demonstration, mode: <strong id="mode">-</strong> (<code>src/demo.ts</code>, emitted <code>dist/demo.js</code>).</p>
+    <p>Run ID: <code id="run-id">-</code> &middot; <a id="event-link" href="events.html">Local event view</a>
+      &middot; <button type="button" id="new-run">New local run</button></p>
+    <nav aria-label="Pages"><a href="index.html">Application</a> &middot; <a href="demo.html?mode=working">Working demo</a>
+      &middot; <a href="demo.html?mode=mismatch">Mismatch demo</a> &middot; <a href="demo.html?mode=repaired">Repaired demo</a>
+      &middot; <a href="practice.html">Task counter practice</a></nav>
+  </header>
+  <main>
+    <section aria-labelledby="game-heading">
+      <h2 id="game-heading">Local game</h2>
+      <div id="board" class="board" aria-label="Board, 3 by 3"></div>
+      <dl class="fields">
+        <dt>Position</dt><dd id="position">-</dd>
+        <dt>Moves remaining</dt><dd id="moves">-</dd>
+        <dt>Score</dt><dd id="score">-</dd>
+        <dt>Status</dt><dd id="status">-</dd>
+      </dl>
+      <div class="controls" role="group" aria-label="Move">
+        <button type="button" data-direction="north">North</button>
+        <button type="button" data-direction="west">West</button>
+        <button type="button" data-direction="east">East</button>
+        <button type="button" data-direction="south">South</button>
+      </div>
+      <p class="hint">Arrow keys also move while focus is outside an editable field.</p>
+      <label for="notes">Player notes</label>
+      <textarea id="notes" rows="2"></textarea>
+    </section>
+    <section aria-labelledby="api-heading">
+      <h2 id="api-heading">Reference API (fixed definition)</h2>
+      <p id="api" role="status">Not checked yet</p>
+      <button type="button" id="inspect-again">Inspect reference again</button>
+      <h2>Local recording</h2>
+      <p id="telemetry" role="status">No event recorded in this run</p>
+    </section>
+  </main>
+  <script type="module" src="dist/demo.js"></script>
+</body>
+</html>

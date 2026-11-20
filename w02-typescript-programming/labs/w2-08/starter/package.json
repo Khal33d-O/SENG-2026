@@ -1,0 +1,23 @@
+{
+  "name": "w2-08-component-refactor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.08 Classes, composition and refactoring: refactor a component and preserve its callers",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check:baseline": "node check.mjs baseline",
+    "check:practice": "node check.mjs practice",
+    "check:core": "node check.mjs core",
+    "check:connection": "node check.mjs connection",
+    "inspect": "node check.mjs inspect",
+    "demo:compare": "node check.mjs compare",
+    "demo:refactor": "node check.mjs refactor",
+    "test": "node check.mjs all"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "_comment": "Changed W3.07 input: display-only properties exist at runtime although the declared types omit them.",
+  "direct": {
+    "requestId": "request-P1",
+    "game": { "boardId": "reference", "position": { "x": 0, "y": 0, "displayLabel": "Start square (A1)" }, "movesRemaining": 6 },
+    "allowedActions": [
+      { "type": "move", "direction": "east", "buttonLabel": "Go east" },
+      { "type": "move", "direction": "south", "buttonLabel": "Go south" }
+    ]
+  },
+  "handlerBody": {
+    "boardId": "reference",
+    "state": { "position": { "x": 0, "y": 0, "displayLabel": "Start square (A1)" }, "movesRemaining": 6, "score": 0, "collected": [], "status": "playing" },
+    "stateVersion": 0,
+    "browserNotes": "draft notes typed in the page"
+  }
+}

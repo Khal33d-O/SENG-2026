@@ -1,0 +1,16 @@
+/* SUPPLIED presentation. Plain text and labelled buttons are enough for the slice. */
+body { font-family: system-ui, sans-serif; margin: 0; background: #fafafa; color: #1a1a1a; line-height: 1.45; }
+main { max-width: 60rem; margin: 0 auto; padding: 1rem; }
+section { background: #fff; border: 1px solid #d0d0d0; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1rem; }
+.controls { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+button { font-size: 1rem; padding: 0.5rem 1rem; }
+button:focus-visible { outline: 3px solid #005ea5; outline-offset: 2px; }
+.state { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; }
+.state dt { font-weight: 600; }
+.state dd { margin: 0; font-family: ui-monospace, monospace; }
+[data-ok="false"] { color: #a00000; font-weight: 600; }
+[data-ok="false"]::before { content: "Problem: "; }
+[data-ok="true"]::before { content: "OK: "; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+th, td { border: 1px solid #ccc; padding: 0.25rem; text-align: left; vertical-align: top; }
+code { word-break: break-all; }

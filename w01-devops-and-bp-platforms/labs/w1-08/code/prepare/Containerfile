@@ -1,0 +1,7 @@
+# Facilitator preparation of the two W1.08 author images (same eligible base as W1.07):
+#   podman build --build-arg RELEASE=a -t localhost/academy-w108-author:a -f Containerfile .
+#   podman build --build-arg RELEASE=b -t localhost/academy-w108-author:b -f Containerfile .
+# Then import both into the classroom cluster nodes (imagePullPolicy: Never) and record their image IDs in W108_ENV.
+FROM docker.io/library/nginx:1.30.4-alpine3.24@sha256:dc5069ad14f19660b141b21236140b91656bf89bbc3e2417c70ae650cd66104c
+ARG RELEASE=a
+COPY ${RELEASE}/ /usr/share/nginx/html/

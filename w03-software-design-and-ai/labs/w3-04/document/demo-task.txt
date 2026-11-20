@@ -1,0 +1,19 @@
+Task: correct one known defect in src/rules.ts. Do not change any other file.
+
+Defect (independently established): from the initial state (0,0) with six moves, East is accepted and
+leaves five moves. South then targets the wall at (1,1) and is rejected, but the current rule returns
+four moves. The contract (contract.md) requires a rejected action to preserve every public state field,
+so the expected result after East, South is: accepted false, position (1,0), movesRemaining 5, score 0,
+collected [], status playing. A rejected move at the board edge must also preserve the state.
+
+Context you may read: contract.md, src/rules.ts, tests/rules.test.mjs.
+Editable file: src/rules.ts only. The board (src/board.ts) and the tests are fixed.
+Fixed behaviour: an accepted move still costs exactly one move, including a move that collects treasure;
+t1 is recorded once for ten points; a win on the exit is checked before the zero-budget loss; completed
+games reject later actions.
+Tools: reads of the three files above and edits of src/rules.ts. Shell and web access are not available;
+the engineer runs the checks separately.
+Stop when the blocked branch preserves the caller's state. Report exactly what you changed. Do not claim
+that any test was run unless you ran it.
+Completion evidence (engineer): the diff touches only src/rules.ts, and assist.py check on the current
+source passes all five independent checks.

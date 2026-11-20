@@ -1,0 +1,50 @@
+# W1.08 guided resources: one Deployment, a Service and a ConfigMap (kind: List wrapper - keep it).
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: page-settings
+  data:
+    TRAINING_SITE: "academy-classroom"   # public, non-secret training value read when the container starts
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: main-page
+    labels:
+      app: main-page                     # the Deployment's OWN label (not a Pod label)
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: main-page
+    template:
+      metadata:
+        labels:
+          app: main-page                 # Pod label: the Service selects Pods by this value
+      spec:
+        containers:
+        - name: page
+          image: localhost/academy-w108-author:a
+          imagePullPolicy: Never         # prepared local image import; not a registry policy
+          ports:
+          - name: http
+            containerPort: 80
+          env:
+          - name: TRAINING_SITE
+            valueFrom:
+              configMapKeyRef:
+                name: page-settings
+                key: TRAINING_SITE
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: page
+  spec:
+    selector:
+      app: main-page
+    ports:
+    - name: http
+      port: 8080
+      targetPort: http

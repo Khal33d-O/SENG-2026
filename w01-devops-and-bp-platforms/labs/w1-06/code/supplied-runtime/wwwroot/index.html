@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W1.06 board preview</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <main>
+    <h1>Board preview (frontend and API)</h1>
+    <p>Configuration loaded: <strong id="label">(loading)</strong></p>
+    <button id="load" type="button">Load reference board</button>
+    <button id="missing" type="button">Request missing board</button>
+    <h2>Observation</h2>
+    <dl>
+      <dt>Requested URL</dt><dd id="url">(none yet)</dd>
+      <dt>Response status</dt><dd id="status" role="status" aria-live="polite">(none yet)</dd>
+    </dl>
+    <h2>Response body</h2>
+    <pre id="body">(nothing received)</pre>
+  </main>
+  <script src="adapter.js"></script>
+</body>
+</html>

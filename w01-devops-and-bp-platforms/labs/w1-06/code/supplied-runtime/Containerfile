@@ -1,0 +1,11 @@
+# W1.06 supplied image: localhost/academy-w106:10.0.12 (built by "python3 lab.py prepare" from code/).
+FROM mcr.microsoft.com/dotnet/sdk:10.0.401@sha256:e70cdb7f80b0348f5cb85f19a8f670fca061f033d57eed12fa003d58b0e06317 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish Relay.csproj -c Release -o /publish --nologo
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.12@sha256:222759b391a1aaf241166672c8f99b2d4ada452e7b5319f3c6e8f265a37b5ad4
+WORKDIR /app
+COPY --from=build /publish/ ./
+# The launcher selects the role (LAB_ROLE) and listener (ASPNETCORE_URLS) for each container.
+ENTRYPOINT ["dotnet", "Relay.dll"]

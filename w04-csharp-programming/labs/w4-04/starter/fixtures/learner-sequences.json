@@ -1,0 +1,63 @@
+{
+  "note": "Choose ONE positive reserve amount and ONE positive spend amount; each must be legal on its own from a new 6-move session, but together they must exceed 6. Use the same amounts in both orders and write your predicted result, remaining and reserved after every step BEFORE running. The starter values are unfinished placeholders, not a suggested conflict.",
+  "cases": [
+    {
+      "id": "S01",
+      "description": "Reserve then spend",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "reserve",
+          "amount": 0,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        },
+        {
+          "op": "spend",
+          "amount": 0,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "description": "Spend then reserve",
+      "initialMoves": 6,
+      "expected": {
+        "remaining": 6,
+        "reserved": 0
+      },
+      "steps": [
+        {
+          "op": "spend",
+          "amount": 0,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        },
+        {
+          "op": "reserve",
+          "amount": 0,
+          "expected": {
+            "result": false,
+            "remaining": 6,
+            "reserved": 0
+          }
+        }
+      ]
+    }
+  ]
+}

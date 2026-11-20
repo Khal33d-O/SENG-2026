@@ -1,0 +1,25 @@
+{
+  "name": "w2-07-unit-tests-and-regression-debugging",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.07 lab: named unit tests, a seeded threshold regression and a full/focused probe discrepancy.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check:baseline": "node check.mjs baseline",
+    "demo:bare": "node check.mjs demo-bare",
+    "demo:named": "node check.mjs demo-named",
+    "check:regression": "node check.mjs regression",
+    "inspect": "node check.mjs inspect",
+    "check:mine": "node check.mjs mine",
+    "check:probe": "node check.mjs probe",
+    "check:focused": "node check.mjs focused",
+    "check:boundary": "node check.mjs boundary",
+    "test": "node check.mjs test"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

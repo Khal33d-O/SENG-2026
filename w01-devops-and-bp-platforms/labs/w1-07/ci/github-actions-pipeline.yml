@@ -1,0 +1,31 @@
+# ILLUSTRATIVE ONLY - not executed in this course and not a BP pipeline definition.
+# Shows how the same five stages as pipeline.py could be expressed in a hosted GitHub Actions workflow.
+# A hosted run would need its own approved runner, registry and permissions (facilitator/platform supplied).
+name: foundation-pipeline
+on:
+  push:
+    branches: [main]
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Select the commit (export)
+        uses: actions/checkout@v4
+      - name: Build (revision label = full commit)
+        run: docker build --label org.opencontainers.image.revision=${{ github.sha }} -t academy-w107:${{ github.sha }} .
+      - name: Test (approved page bytes)
+        run: |
+          docker run -d --name page -p 127.0.0.1:8080:80 academy-w107:${{ github.sha }}
+          sleep 2
+          curl -fsS http://127.0.0.1:8080/ -o observed.html
+          echo "$APPROVED_SHA256  observed.html" | sha256sum -c -
+        env:
+          APPROVED_SHA256: ${{ vars.APPROVED_PAGE_SHA256 }}
+      - name: Scan the saved archive (block CRITICAL, exit 7)
+        run: |
+          docker save -o image.tar academy-w107:${{ github.sha }}
+          trivy image --input image.tar --severity CRITICAL --exit-code 7
+      - name: Publish (placeholder - registry and credentials are platform-supplied)
+        run: echo "publication target pending / facilitator-supplied"
+      - name: Deploy (placeholder - deployment is a separate, approved workflow)
+        run: echo "deployment target pending / facilitator-supplied"

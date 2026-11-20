@@ -1,0 +1,17 @@
+{
+  "name": "w2-05-examples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "npm run build && node tools/serve.mjs",
+    "parcel": "npm run build && node dist/parcel.js"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

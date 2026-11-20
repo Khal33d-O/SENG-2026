@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W2.10 Playable slice planning</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="dist/app.js"></script>
+</head>
+<body>
+  <main>
+    <h1>W2.10 Playable slice planning comparison</h1>
+
+    <section aria-labelledby="plan-heading">
+      <h2 id="plan-heading">Selected plan</h2>
+      <p id="plan-status" role="status">Loading plan…</p>
+      <p id="api-status" role="status">Checking reference API…</p>
+      <p>Run ID: <code id="run-id">-</code> ·
+        <a id="event-link" href="events.html" target="_blank">Local event view</a> ·
+        <a href="./">Selected plan.json</a> ·
+        <a href="plan.json" target="_blank">View plan.json</a> ·
+        Supplied comparisons: <a href="?plan=A">Plan A</a>, <a href="?plan=B">Plan B</a>, <a href="?plan=C">Plan C</a></p>
+      <p id="recording" role="status">No events recorded yet.</p>
+    </section>
+
+    <section aria-labelledby="board-heading">
+      <h2 id="board-heading">Reference treasure hunt</h2>
+      <p>3×3 board: start (0,0), wall (1,1), treasure t1 at (2,0), exit (2,2), six moves.</p>
+      <div class="controls" role="group" aria-label="Move">
+        <button type="button" data-direction="north" disabled>North</button>
+        <button type="button" data-direction="east" disabled>East</button>
+        <button type="button" data-direction="south" disabled>South</button>
+        <button type="button" data-direction="west" disabled>West</button>
+      </div>
+      <p id="keyboard-note"></p>
+      <dl class="state" aria-live="polite">
+        <dt>Position</dt><dd id="pos">-</dd>
+        <dt>Moves remaining</dt><dd id="moves">-</dd>
+        <dt>Score</dt><dd id="score">-</dd>
+        <dt>Collected IDs</dt><dd id="collected">-</dd>
+        <dt>Status</dt><dd id="status">-</dd>
+      </dl>
+      <p id="item-label" hidden></p>
+      <p>Last action: <span id="result">-</span></p>
+    </section>
+
+    <section aria-labelledby="range-heading">
+      <h2 id="range-heading">Target range</h2>
+      <p>Two rounds. The buttons supply deterministic hit or miss results; there is no aiming.</p>
+      <div class="controls" role="group" aria-label="Shot result">
+        <button type="button" data-shot="hit" disabled>Hit</button>
+        <button type="button" data-shot="miss" disabled>Miss</button>
+      </div>
+      <dl class="state" aria-live="polite">
+        <dt>Ammunition</dt><dd id="ammo">-</dd>
+        <dt>Score</dt><dd id="range-score">-</dd>
+        <dt>Shots</dt><dd id="shots">-</dd>
+        <dt>Status</dt><dd id="range-status">-</dd>
+      </dl>
+      <p>Last shot: <span id="range-result">-</span></p>
+    </section>
+  </main>
+</body>
+</html>

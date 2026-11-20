@@ -1,0 +1,4 @@
+{
+  "_metadata": "Changed application profile (Task 4 handover). Supplied runtime setting; read the startup log to find the listener.",
+  "env": { "ASPNETCORE_URLS": "http://0.0.0.0:8090" }
+}

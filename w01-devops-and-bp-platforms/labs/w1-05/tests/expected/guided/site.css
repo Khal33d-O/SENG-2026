@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; background: #f4f6f8; color: #1c2a36; margin: 2rem; }
+h1 { color: #2f6b3a; }
+.status { font-weight: 700; }
+.release { font-family: monospace; }

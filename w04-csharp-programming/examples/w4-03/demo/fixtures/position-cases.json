@@ -1,0 +1,153 @@
+{
+  "kind": "position",
+  "board": "reference",
+  "cases": [
+    {
+      "id": "P01",
+      "description": "Open normal candidate",
+      "candidate": {
+        "x": 0,
+        "y": 1
+      },
+      "expected": true
+    },
+    {
+      "id": "P02",
+      "description": "Final in-bounds cell (width-1, height-1)",
+      "candidate": {
+        "x": 2,
+        "y": 2
+      },
+      "expected": true
+    },
+    {
+      "id": "P03",
+      "description": "Exact width X == Width is outside",
+      "candidate": {
+        "x": 3,
+        "y": 0
+      },
+      "expected": false
+    },
+    {
+      "id": "P04",
+      "description": "Exact height Y == Height is outside",
+      "candidate": {
+        "x": 0,
+        "y": 3
+      },
+      "expected": false
+    },
+    {
+      "id": "P05",
+      "description": "Negative X is outside",
+      "candidate": {
+        "x": -1,
+        "y": 0
+      },
+      "expected": false
+    },
+    {
+      "id": "P06",
+      "description": "Negative Y is outside",
+      "candidate": {
+        "x": 0,
+        "y": -1
+      },
+      "expected": false
+    },
+    {
+      "id": "P07",
+      "description": "Origin is open",
+      "candidate": {
+        "x": 0,
+        "y": 0
+      },
+      "expected": true
+    },
+    {
+      "id": "P08",
+      "description": "Wall membership (single wall array)",
+      "candidate": {
+        "x": 1,
+        "y": 1
+      },
+      "expected": false
+    },
+    {
+      "id": "P09",
+      "description": "Empty wall array: (2,2) is open",
+      "candidate": {
+        "x": 2,
+        "y": 2
+      },
+      "expected": true,
+      "walls": []
+    },
+    {
+      "id": "P10",
+      "description": "Empty wall array does not make (3,0) legal",
+      "candidate": {
+        "x": 3,
+        "y": 0
+      },
+      "expected": false,
+      "walls": []
+    },
+    {
+      "id": "P11",
+      "description": "First wall in the array matches",
+      "candidate": {
+        "x": 0,
+        "y": 1
+      },
+      "expected": false,
+      "walls": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "description": "Later (final) wall in the array matches",
+      "candidate": {
+        "x": 1,
+        "y": 2
+      },
+      "expected": false,
+      "walls": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "description": "Same X, different Y as a wall is open",
+      "candidate": {
+        "x": 1,
+        "y": 0
+      },
+      "expected": true
+    }
+  ]
+}

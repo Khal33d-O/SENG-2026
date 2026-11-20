@@ -1,0 +1,56 @@
+# Desired state for the Week 5 classroom deployment. release.py select edits ONLY the line marked
+# "selected-app-image" (and, on the very first selection, the "known-good-migration-image" line).
+# Schema, migration init step and retained volume are fixed: restoring an image never rolls back data.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: academy-w5-api
+  namespace: academy-w5
+  labels:
+    app: academy-w5-api
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate            # one SQLite writer: stop the old Pod before the new one starts
+  selector:
+    matchLabels:
+      app: academy-w5-api
+  template:
+    metadata:
+      labels:
+        app: academy-w5-api
+    spec:
+      initContainers:
+        - name: migrate       # explicit InitialSessions migration (MigrateAsync, never EnsureCreated)
+          image: localhost/academy-w5-api:unselected  # known-good-migration-image
+          args: ["--migrate"]
+          env:
+            - { name: STORE, value: sqlite }
+            - { name: GAME_DB, value: /data/game.db }
+          volumeMounts:
+            - { name: data, mountPath: /data }
+      containers:
+        - name: api
+          image: localhost/academy-w5-api:unselected  # selected-app-image
+          ports:
+            - containerPort: 8080
+          env:
+            - { name: STORE, value: sqlite }
+            - { name: GAME_DB, value: /data/game.db }
+            - { name: HINT_URL, value: "http://127.0.0.1:5056" }
+            - { name: LAB_ENV, value: workshop-blue }
+          readinessProbe:     # /health queries the Sessions table: 503 when the schema is missing
+            httpGet: { path: /health, port: 8080 }
+            periodSeconds: 5
+          volumeMounts:
+            - { name: data, mountPath: /data }   # game.db plus SQLite -wal/-shm sidecars
+        - name: hint          # Week 3 hint server, simulated model only (no keys)
+          image: localhost/academy-w5-hint:known-good
+          env:
+            - { name: HINT_MODE, value: timeout }
+            - { name: HINT_PORT, value: "5056" }
+      volumes:
+        - name: data
+          hostPath:           # single-node training retention, not replicated storage
+            path: /var/lib/academy-w5/data
+            type: DirectoryOrCreate

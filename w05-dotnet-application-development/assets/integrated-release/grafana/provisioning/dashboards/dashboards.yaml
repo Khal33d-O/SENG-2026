@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: academy-w5
+    folder: Academy
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

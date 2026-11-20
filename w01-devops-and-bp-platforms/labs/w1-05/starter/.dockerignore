@@ -1,0 +1,5 @@
+# Excluded from the build context: the test entry point and metadata.
+# The internal fixture under delivery/blue/internal/ is deliberately NOT excluded here:
+# your COPY choices must keep it out of the served directory.
+test_entry.py
+metadata.json

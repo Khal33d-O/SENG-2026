@@ -1,0 +1,16 @@
+{
+  "name": "w2-08-examples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "demo:compare": "npm run build && node dist/demo-compare.js"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

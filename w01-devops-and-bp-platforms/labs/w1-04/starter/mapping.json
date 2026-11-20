@@ -1,0 +1,6 @@
+{
+  "_metadata": "W1.04 challenge starter. Required browser endpoint http://127.0.0.1:9123/. Contains one deliberate defect. You may change host_port and container_port only.",
+  "host_ip": "127.0.0.1",
+  "host_port": 9123,
+  "container_port": 80
+}

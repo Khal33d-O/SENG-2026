@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasure hunt with hints</title>
+  <link rel="stylesheet" href="/browser/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Treasure hunt</h1>
+    <p>P = player, T = treasure t1, # = wall, E = exit. Collect t1, then reach the exit.</p>
+    <table id="board" aria-label="Board"></table>
+    <p id="status" role="status"></p>
+    <div class="moves">
+      <button data-move="north">North</button>
+      <button data-move="east">East</button>
+      <button data-move="south">South</button>
+      <button data-move="west">West</button>
+      <button id="reset">Reset</button>
+    </div>
+    <p id="message" aria-live="polite"></p>
+    <fieldset id="controls">
+      <legend>Controlled local scenario (synthetic; no provider)</legend>
+      <label>Scenario
+        <select id="scenario">
+          <option value="valid-advice">valid-advice</option>
+          <option value="invalid-advice">invalid-advice</option>
+          <option value="controlled-timeout">controlled-timeout</option>
+          <option value="seed-a">Seed A</option>
+          <option value="seed-b">Seed B</option>
+        </select>
+      </label>
+      <label>Wait (ms, 0-1000) <input id="wait" type="number" min="0" max="1000" step="1" value="0"></label>
+    </fieldset>
+    <p><button id="hint">Hint</button></p>
+    <p id="advice" aria-live="polite"></p>
+    <details><summary>Complete state</summary><pre id="state"></pre></details>
+  </main>
+  <script type="module" src="/browser/app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W2.06 Treasure hunt with checked board data</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Treasure hunt</h1>
+    <nav aria-label="Demonstrations">
+      Demonstrations:
+      <a href="demos/inspect.html">HTTP response inspection</a> ·
+      <a href="demos/message.html">Asynchronous message request</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="game-heading">
+      <h2 id="game-heading">Current game (local)</h2>
+      <div id="board" class="board" aria-label="Board, 3 by 3"></div>
+      <p id="game-status" aria-live="polite"></p>
+      <p id="last-action"></p>
+      <div class="controls" role="group" aria-label="Move">
+        <button type="button" data-direction="north">North</button>
+        <button type="button" data-direction="west">West</button>
+        <button type="button" data-direction="east">East</button>
+        <button type="button" data-direction="south">South</button>
+      </div>
+      <p class="hint">Arrow keys also move while focus is outside an editable field.</p>
+      <button type="button" id="restart">Restart</button>
+
+      <details>
+        <summary>Inspect the supplied state</summary>
+        <button type="button" id="read-diagnostics">Read diagnostics</button>
+        <pre id="diagnostics">Not read yet.</pre>
+      </details>
+
+      <label for="notes">Player notes</label>
+      <textarea id="notes" rows="3"></textarea>
+    </section>
+
+    <section id="request-panel" aria-labelledby="request-heading" aria-busy="false">
+      <h2 id="request-heading">Remote board definition (inspection only)</h2>
+      <p class="hint">Loading inspects the reference definition. It never starts a new game.</p>
+
+      <label for="response-condition">Response condition (development proxy, teaching only)</label>
+      <select id="response-condition">
+        <option value="valid">Valid reference</option>
+        <option value="http">Unavailable</option>
+        <option value="malformed">Malformed JSON</option>
+        <option value="missing-id">Missing treasure ID</option>
+        <option value="trial">My trial layout</option>
+        <option value="delayed-zero">Delayed zero budget</option>
+        <optgroup label="Supplied check cases (used by npm test)">
+          <option value="zero-budget">Zero budget</option>
+          <option value="negative-budget">Negative budget</option>
+          <option value="fractional-budget">Fractional budget</option>
+          <option value="blocked-treasure">Treasure on a wall</option>
+          <option value="blocked-later">Later treasure on a later wall</option>
+          <option value="shared-axis">Treasures sharing one coordinate with a wall</option>
+        </optgroup>
+      </select>
+      <p id="condition-status">Selecting…</p>
+
+      <button type="button" id="load-board">Load board data</button>
+      <p id="request-status" role="status" data-kind="idle">Idle: No request sent yet.</p>
+
+      <h3>Last accepted definition</h3>
+      <pre id="definition">No remote definition accepted.</pre>
+    </section>
+  </main>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>

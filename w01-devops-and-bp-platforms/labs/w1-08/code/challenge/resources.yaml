@@ -1,0 +1,74 @@
+# W1.08 challenge resources. You own: the main container's image and the Service's selector.
+# Keep preview-page (image, replicas, labels), resource names, ports and the ConfigMap unchanged.
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: page-settings
+  data:
+    TRAINING_SITE: "academy-classroom"
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: main-page
+    labels:
+      app: main-page
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: main-page
+    template:
+      metadata:
+        labels:
+          app: main-page
+      spec:
+        containers:
+        - name: page
+          image: localhost/academy-w108-author:a
+          imagePullPolicy: Never
+          ports:
+          - name: http
+            containerPort: 80
+          env:
+          - name: TRAINING_SITE
+            valueFrom:
+              configMapKeyRef:
+                name: page-settings
+                key: TRAINING_SITE
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: preview-page
+    labels:
+      app: preview-page
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: preview-page
+    template:
+      metadata:
+        labels:
+          app: preview-page
+      spec:
+        containers:
+        - name: page
+          image: localhost/academy-w108-author:a
+          imagePullPolicy: Never
+          ports:
+          - name: http
+            containerPort: 80
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: page
+  spec:
+    selector:
+      app: preview-page
+    ports:
+    - name: http
+      port: 8080
+      targetPort: http

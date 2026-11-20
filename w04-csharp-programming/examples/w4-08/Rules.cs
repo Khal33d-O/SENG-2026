@@ -1,0 +1,118 @@
+// SUPPLIED (W4.08): models and the reference rules. Do not edit; tests exercise this real rule operation.
+// Rule reasons follow the shared contract: WALL, EDGE, INVALID_ACTION, GAME_COMPLETE.
+namespace TreasureRules;
+
+/// <summary>A board cell. x is the column (east is x + 1); y is the row (south is y + 1).</summary>
+public record Position(int X, int Y);
+
+/// <summary>A treasure on the board, worth Value points the first time it is entered.</summary>
+public record Treasure(string Id, int X, int Y, int Value);
+
+/// <summary>Wire data for a board. JSON "initialMoves" maps to InitialMoves.</summary>
+public record Board(
+    string Id,
+    string Name,
+    int Width,
+    int Height,
+    Position Start,
+    Position[] Walls,
+    Treasure[] Treasures,
+    Position Exit,
+    int InitialMoves);
+
+/// <summary>Rule state. Status is "playing", "won" or "lost".</summary>
+public record GameState(
+    Position Position,
+    int MovesRemaining,
+    int Score,
+    string[] Collected,
+    string Status);
+
+/// <summary>A requested action: { "type": "move", "direction": "east" }. Either field may be missing.</summary>
+public record MoveAction(string? Type, string? Direction);
+
+/// <summary>The rule result: accepted flag, resulting state and an optional rejection reason.</summary>
+public record MoveResult(bool Accepted, GameState State, string? Reason);
+
+public static class Rules
+{
+    // Rejection reasons from the shared contract.
+    public const string Wall = "WALL";
+    public const string Edge = "EDGE";
+    public const string InvalidAction = "INVALID_ACTION";
+    public const string GameComplete = "GAME_COMPLETE";
+
+    /// <summary>A fresh state for the board: start position, full budget, no score.</summary>
+    public static GameState InitialState(Board board)
+    {
+        return new GameState(
+            new Position(board.Start.X, board.Start.Y),
+            board.InitialMoves,
+            0,
+            [],
+            "playing");
+    }
+
+    /// <summary>
+    /// Evaluates one action against the current state and returns (accepted, state, reason).
+    /// The board, state and action are never changed; a new state is always returned.
+    /// </summary>
+    public static MoveResult EvaluateMove(Board board, GameState state, MoveAction? action)
+    {
+        if (state.Status != "playing") return Reject(state, GameComplete);
+
+        if (action is null || action.Type != "move") return Reject(state, InvalidAction);
+
+        (int dx, int dy) step;
+        switch (action.Direction)
+        {
+            case "north": step = (0, -1); break;
+            case "east": step = (1, 0); break;
+            case "south": step = (0, 1); break;
+            case "west": step = (-1, 0); break;
+            default: return Reject(state, InvalidAction); // unknown or missing direction
+        }
+
+        int x = state.Position.X + step.dx;
+        int y = state.Position.Y + step.dy;
+        if (x < 0 || y < 0 || x >= board.Width || y >= board.Height) return Reject(state, Edge);
+        if (board.Walls.Any(w => w.X == x && w.Y == y)) return Reject(state, Wall);
+
+        // 1. Move and charge one move.
+        int moves = state.MovesRemaining - 1;
+        int score = state.Score;
+        List<string> collected = [.. state.Collected];
+
+        // 2. Entering an uncollected treasure adds its value once.
+        foreach (Treasure t in board.Treasures)
+        {
+            if (t.X == x && t.Y == y && !collected.Contains(t.Id))
+            {
+                collected.Add(t.Id);
+                score += t.Value;
+            }
+        }
+
+        // 3. Win on the exit with every treasure collected - checked BEFORE the zero-budget loss (F07).
+        // 4. Otherwise zero moves means lost.
+        bool allCollected = board.Treasures.All(t => collected.Contains(t.Id));
+        string status = "playing";
+        if (x == board.Exit.X && y == board.Exit.Y && allCollected) status = "won";
+        else if (moves == 0) status = "lost";
+
+        GameState next = new(new Position(x, y), moves, score, collected.ToArray(), status);
+        return new MoveResult(true, next, null);
+    }
+
+    // A rejection returns an unchanged COPY of the state, never the caller's object.
+    private static MoveResult Reject(GameState state, string reason)
+    {
+        GameState copy = new(
+            new Position(state.Position.X, state.Position.Y),
+            state.MovesRemaining,
+            state.Score,
+            [.. state.Collected],
+            state.Status);
+        return new MoveResult(false, copy, reason);
+    }
+}

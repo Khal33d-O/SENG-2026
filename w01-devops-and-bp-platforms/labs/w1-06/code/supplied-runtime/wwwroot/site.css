@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; margin: 2rem; background: #f6f7f4; color: #1d2b1f; }
+button { font-size: 1rem; padding: 0.4rem 0.8rem; margin-right: 0.5rem; background: #2f6b3a; color: #fff; border: 0; border-radius: 4px; }
+button:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+dt { font-weight: 700; } pre { background: #fff; border: 1px solid #c9d3c6; padding: 0.75rem; }

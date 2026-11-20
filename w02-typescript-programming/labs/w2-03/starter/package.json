@@ -1,0 +1,23 @@
+{
+  "name": "w2-03-neighbours-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.03 lab: select valid neighbouring positions (starter).",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check:baseline": "npm run build && node --test --test-reporter=spec tests/baseline.test.mjs",
+    "test": "npm run build && node --test --test-reporter=spec tests/public.test.mjs",
+    "check:mine": "npm run build && node --test --test-reporter=spec tests/learner-checks.test.mjs",
+    "practice": "npm run build && node practice.mjs",
+    "demo:loop": "npm run build && node dist/demo-loop.js",
+    "demo:filter": "npm run build && node dist/demo-filter.js"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "typescript": "5.9.3"
+  }
+}

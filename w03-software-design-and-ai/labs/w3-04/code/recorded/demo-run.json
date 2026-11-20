@@ -1,0 +1,27 @@
+{
+  "_label": "Recorded demonstration run reproduced as a course teaching record (authored to match the book's description of the recorded run; replayed by assist.py without any model call).",
+  "events": [
+    {
+      "type": "read",
+      "path": "contract.md",
+      "decision": "allow"
+    },
+    {
+      "type": "read",
+      "path": "src/rules.ts",
+      "decision": "allow"
+    },
+    {
+      "type": "edit",
+      "path": "src/rules.ts",
+      "summary": "removed the stale defect comment; blocked branch returns the unchanged state"
+    },
+    {
+      "type": "message",
+      "text": "I changed the blocked branch so a rejected action returns the caller's state unchanged. I have not run any checks."
+    }
+  ],
+  "editedFile": "edited-rules.ts",
+  "processExit": 0,
+  "finalMessage": "I changed the blocked branch so a rejected action returns the caller's state unchanged. I have not run any checks."
+}

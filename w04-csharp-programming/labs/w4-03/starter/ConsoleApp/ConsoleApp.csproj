@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Executable project: OutputType Exe makes this the project that dotnet run launches. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- The console uses the separate rule library. -->
+  <ItemGroup>
+    <ProjectReference Include="..\Rules\Rules.csproj" />
+  </ItemGroup>
+
+</Project>

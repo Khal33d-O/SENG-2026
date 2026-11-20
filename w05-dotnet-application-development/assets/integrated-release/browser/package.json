@@ -1,0 +1,10 @@
+{
+  "name": "academy-w5-browser-checks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Supplied Chromium checker used by run.py rehearse (Playwright).",
+  "devDependencies": {
+    "playwright": "1.61.0"
+  }
+}

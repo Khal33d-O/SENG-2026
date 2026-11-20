@@ -1,0 +1,21 @@
+%% W3.01 partial syntax checkpoint (restored by recover.py). It renders; it does NOT choose the design.
+%% Legend (one meaning per arrow):
+%%   A -->|runtime import| B   A loads B when A is evaluated (retained in the emitted JavaScript)
+%%   A -.->|type import| B     type-only import; erased from the emitted JavaScript
+%%   A ==>|call| B             A invokes an operation of B (use a separate call view if crowded)
+%% Mark environmental execution stages in node labels, e.g. "reads document at module evaluation".
+flowchart LR
+  browser["browser.mjs<br/>fixed browser consumer"]
+  headlessPublic["headless-public.mjs<br/>fixed public headless consumer"]
+  index["src/index.ts<br/>public entry"]
+  application["src/application.ts<br/>application factory"]
+  makeGame["src/make-game.ts<br/>coordinator"]
+  rules["src/rules-seeded.ts<br/>rule module (seeded defect)"]
+  renderer["src/browser-renderer.ts<br/>DOM renderer"]
+  historyStore["src/history-store.ts<br/>local history, in memory for this process"]
+  ports["src/ports.ts<br/>Renderer and Game types"]
+
+  browser -->|runtime import| index
+  application -->|runtime import| makeGame
+  %% TODO: add every remaining runtime import and re-export, the type imports, and where
+  %% top-level environmental work happens. Keep the text alternative in notes.md in sync.

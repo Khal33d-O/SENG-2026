@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Week 4 treasure rules, supplied unchanged. Pure C#: no HTTP, storage, clock or randomness. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Academy.Rules</RootNamespace>
+  </PropertyGroup>
+</Project>

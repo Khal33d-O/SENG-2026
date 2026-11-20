@@ -1,0 +1,183 @@
+{
+  "kind": "candidate",
+  "board": "reference",
+  "cases": [
+    {
+      "id": "C01",
+      "description": "First candidate is open",
+      "candidates": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "C02",
+      "description": "Blocked first (wall), later candidate open",
+      "candidates": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 0
+        }
+      ],
+      "expected": {
+        "x": 2,
+        "y": 0
+      }
+    },
+    {
+      "id": "C03",
+      "description": "Two open candidates: the earliest wins",
+      "candidates": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 2
+        }
+      ],
+      "expected": {
+        "x": 0,
+        "y": 1
+      }
+    },
+    {
+      "id": "C04",
+      "description": "Exact width (3,0) is outside; the search continues",
+      "candidates": [
+        {
+          "x": 3,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 0
+        }
+      ],
+      "expected": {
+        "x": 2,
+        "y": 0
+      }
+    },
+    {
+      "id": "C05",
+      "description": "Negative X is outside; later candidate open",
+      "candidates": [
+        {
+          "x": -1,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 2
+        }
+      ],
+      "expected": {
+        "x": 0,
+        "y": 2
+      }
+    },
+    {
+      "id": "C06",
+      "description": "Exact height (0,3) is outside; later candidate open",
+      "candidates": [
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 1,
+          "y": 2
+        }
+      ],
+      "expected": {
+        "x": 1,
+        "y": 2
+      }
+    },
+    {
+      "id": "C07",
+      "description": "Wall, then top edge, then open",
+      "candidates": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": -1
+        },
+        {
+          "x": 2,
+          "y": 1
+        }
+      ],
+      "expected": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    {
+      "id": "C08",
+      "description": "Only the final candidate is open",
+      "candidates": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 3
+        },
+        {
+          "x": 4,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 2
+        }
+      ],
+      "expected": {
+        "x": 2,
+        "y": 2
+      }
+    },
+    {
+      "id": "C09",
+      "description": "Empty candidate array: no selectable position",
+      "candidates": [],
+      "expected": null
+    },
+    {
+      "id": "C10",
+      "description": "All candidates blocked or outside",
+      "candidates": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 0
+        },
+        {
+          "x": -1,
+          "y": -1
+        }
+      ],
+      "expected": null
+    }
+  ]
+}

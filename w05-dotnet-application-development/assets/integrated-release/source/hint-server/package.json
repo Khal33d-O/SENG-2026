@@ -1,0 +1,8 @@
+{
+  "name": "academy-w5-hint-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Week 3 hint handler packaged for Week 5: simulated model modes, deterministic fallback.",
+  "scripts": { "start": "node server.mjs" }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "academy/w3-08/hint.schema.json",
+  "title": "Agreed hint response (documents the runtime contract; no schema library is used)",
+  "type": "object",
+  "required": ["action", "explanation"],
+  "additionalProperties": true,
+  "properties": {
+    "action": {
+      "type": "object",
+      "required": ["type", "direction"],
+      "additionalProperties": true,
+      "properties": {
+        "type": { "const": "move" },
+        "direction": { "enum": ["north", "east", "south", "west"] }
+      }
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Nonempty after trimming; at most 160 JavaScript (UTF-16) string units measured on the original string. Accepted text is returned unchanged."
+    }
+  },
+  "x-domain-rule": "action.direction must be in the allowed list derived by the rule helper for the current state (north/east/south/west order).",
+  "x-extra-field-policy": "Additional fields are accepted but omitted from the public hint.",
+  "x-fallback": "First permitted action with explanation 'A permitted next move.', or hint null when no action is permitted (no client call)."
+}

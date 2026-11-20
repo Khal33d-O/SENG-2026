@@ -1,0 +1,15 @@
+%% W1.06 diagram starter. Nodes are supplied; add the missing host/port labels and each setting's reader.
+flowchart LR
+  subgraph Host["Prepared local host"]
+    Browser["Browser (request initiator)"]
+    subgraph FE["Frontend container (own loopback)"]
+      Frontend["Frontend listener :____"]
+    end
+    subgraph APIC["API container (own loopback, no published port)"]
+      Api["API listener :____"]
+    end
+  end
+  Browser -->|"http://127.0.0.1:____ (host publication)"| Frontend
+  Frontend -->|"____ (second initiator; which host? which port?)"| Api
+  %% Annotate: API_UPSTREAM read by ____ ; BROWSER_API_URL read by ____ ; PUBLIC_LABEL shown by ____
+  %% Mark where a loopback address is interpreted.

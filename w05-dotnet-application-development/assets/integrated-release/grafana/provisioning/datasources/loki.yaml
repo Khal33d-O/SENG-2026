@@ -1,0 +1,9 @@
+# Request-filtered local data source for the W5.07 view (Loki runs in the same local pod).
+apiVersion: 1
+datasources:
+  - name: Academy Loki
+    uid: academy-loki
+    type: loki
+    access: proxy
+    url: http://localhost:3100
+    isDefault: true

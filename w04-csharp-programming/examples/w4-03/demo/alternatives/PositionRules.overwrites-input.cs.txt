@@ -1,0 +1,31 @@
+// KNOWN DEFECT (preflight mutant): correct Boolean, but it overwrites an input array element.
+// Copy over Rules/PositionRules.cs in a disposable copy only.
+// Supplied, complete Boolean predicate (W4.03). Do not rewrite it in the lab.
+// An open position is inside the board and absent from the wall array. The bounds check runs
+// before wall inspection; a matching wall returns false; a non-matching wall proves nothing about
+// later walls, so the open result belongs after the entire search.
+// It does NOT check adjacency, the move budget, treasure collection or game completion.
+namespace TreasureRules;
+
+public static class PositionRules
+{
+    public static bool IsOpenPosition(
+        Board board, Position candidate)
+    {
+        if (candidate.X < 0 || candidate.X >= board.Width ||
+            candidate.Y < 0 || candidate.Y >= board.Height)
+        {
+            return false;
+        }
+        bool open = true;
+        for (int index = 0; index < board.Walls.Length; index++)
+        {
+            if (board.Walls[index].X == candidate.X && board.Walls[index].Y == candidate.Y)
+            {
+                open = false;
+            }
+            board.Walls[index] = new Position(9, 9); // wrong: changes the caller's wall array
+        }
+        return open;
+    }
+}

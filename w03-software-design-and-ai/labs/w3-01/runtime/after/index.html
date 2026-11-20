@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>W3.01 after</title>
+<style>body{font-family:Arial,sans-serif;margin:1rem} pre{white-space:pre-wrap} button{margin:.2rem;padding:.4rem .8rem}</style></head>
+<body>
+  <h1>W3.01 runtime: after</h1>
+  <p>Click East, South, East, South, South and record every complete state.</p>
+  <p><button data-move="north">North</button><button data-move="east">East</button><button data-move="south">South</button><button data-move="west">West</button></p>
+  <h2>Current state (rendered by browserRenderer)</h2>
+  <pre id="state"></pre>
+  <h2>Local history (copied states)</h2>
+  <pre id="history"></pre>
+  <script type="module" src="./browser.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "w2-04-typed-state-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W2.04 Typed state and module boundaries: rule/caller lab starter",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check:baseline": "tsc -p tsconfig.json && node checks/baseline.mjs",
+    "demo:models": "tsc -p tsconfig.json && node dist/demos/models.js",
+    "demo:transition": "tsc -p tsconfig.json && node dist/demos/transition.js",
+    "practice": "tsc -p tsconfig.json && node checks/practice.mjs",
+    "test": "tsc -p tsconfig.json && node --test checks/public.test.mjs",
+    "check:mine": "tsc -p tsconfig.json && node checks/mine.mjs",
+    "clean": "node checks/clean.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
