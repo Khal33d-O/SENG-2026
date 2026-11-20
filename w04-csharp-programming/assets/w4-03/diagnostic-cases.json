@@ -1,0 +1,14 @@
+[
+  {
+    "id": "D01",
+    "plannedCandidates": [{ "x": 1, "y": 1 }, { "x": 2, "y": 0 }, { "x": 0, "y": 2 }],
+    "displayCandidates": [{ "x": 1, "y": 1 }, { "x": 2, "y": 0 }, { "x": 2, "y": 2 }],
+    "expected": { "x": 2, "y": 0 }
+  },
+  {
+    "id": "D02",
+    "plannedCandidates": [{ "x": 3, "y": 0 }, { "x": 0, "y": 2 }, { "x": 2, "y": 1 }],
+    "displayCandidates": [{ "x": 2, "y": 1 }, { "x": 3, "y": 0 }, { "x": 0, "y": 2 }],
+    "expected": { "x": 0, "y": 2 }
+  }
+]
